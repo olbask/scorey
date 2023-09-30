@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Bet{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="game">Game</label>
+    <select id="game" name="game">
+      {% for game in games if game['date'] > now or (game['date'] == now and game['time'] > now_time) %}
+        <option value="{{ game['id'] }}"> {{ game['date'] }} : {{ game['home'] }} - {{ game['away'] }} </option>
+      {% endfor %}
+    </select>
+    <label for="bet">Bet</label>
+    <select id="bet" name="bet">
+      {% for bet in bets%}
+        <option value="{{ bet['id'] }}"> {{ bet['outcome'] }} </option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

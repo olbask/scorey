@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ data[0][0] }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% for item in data %}
+    <div>
+        <tr>
+            <td>{{ item[1] }} {{ item[2] }}</td>
+            <td> {{ item[3] }} - {{ item[4] }}</td>
+            <td>Результат: {{ item[5] }}</td>
+        </tr>
+    </div>
+    {% endfor %}
+{% endblock %}
